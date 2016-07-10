@@ -9,35 +9,37 @@ module.export = function(arr){
 	var num = [0];
 
 	arr.forEach(function(cls) {       // цикл который на кажый элемент массива использует функцию
-		if (!classesCount[cls]) {	  // проверяет есть ли в объекте ключ с таким же именем как у элемента массива выбраный циклом 
-			classesCount[cls] = 0;	 // если в обьекте нет ключа с elem  который сейчас выбран циклом то он его добовляет в Обьект и присваивает 0 
-		}
-	classesCount[cls]++;  // если он имееться то к имеющимуся значению прибовляеться 1 и перезаписуеться результат;
+	   if (!classesCount[cls]) {	  // проверяет есть ли в объекте ключ с таким же именем как у элемента массива выбраный циклом 
+	       classesCount[cls] = 0;	 // если в обьекте нет ключа с elem  который сейчас выбран циклом то он его добовляет в Обьект и присваивает 0 
+	   }
+  	   classesCount[cls]++;  // если он имееться то к имеющимуся значению прибовляеться 1 и перезаписуеться результат;
 	});          
 
 	var sortedClasses = Object.keys(classesCount).sort(function(c1, c2) { 
-		return classesCount[c1] > classesCount[c2] ? -1 : 1; 	// все записуеться как массив в sortedClasses
+	    return classesCount[c1] > classesCount[c2] ? -1 : 1; 	// все записуеться как массив в sortedClasses
 	});
 
-	for (var i = 0; i<= sortedClasses.length - 1; i++) { //цикл для 
+	for (var i = 0; i<= sortedClasses.length - 1; i++) {
+	
 		 delete classesCount[sortedClasses[i]];
-
+		 
 		 num.forEach(function(cls,index) {     
-			if (num[index] > 25) {           // если элемент массива > 25  то
-				num[index + 1]++;			  // если есть впереди стоящий то он увеличиваеться на 1
+		   if (num[index] > 25) {           // если элемент массива > 25  то
+		       num[index + 1]++;			  // если есть впереди стоящий то он увеличиваеться на 1
 
-				if (!num[index + 1]){		// проверяем нет ли впереди стоящего элемента масива
-		    	    num[index+1] = 0;      // если НЕТ то создаем его и присваиваем 0
-				}				
-					num[index] = 0;			//обнуляем текуший элемент массива так как он больше 25
-					num[0] = 0;				// обнуляем флаг что бы счетчик заново начал нумеровать алфавит
-			}
+		       if (!num[index + 1]){		// проверяем нет ли впереди стоящего элемента масива
+		    	   num[index+1] = 0;      // если НЕТ то создаем его и присваиваем 0
+		       }
+		       
+		       num[index] = 0;			//обнуляем текуший элемент массива так как он больше 25
+		       num[0] = 0;				// обнуляем флаг что бы счетчик заново начал нумеровать алфавит
+		    }
 		 });
 
 		 classesCount[sortedClasses[i]] = []; 			// инициализируем свойство для ключа
 		
 		 for (var j = 0; j<= num.length - 1; j++  ) { // цикл для  ввода свойства в ключ
-			 classesCount[sortedClasses[i]] = alf[num[j]] + classesCount[sortedClasses[i]]; 
+		      classesCount[sortedClasses[i]] = alf[num[j]] + classesCount[sortedClasses[i]]; 
 		 }
 
 		 num[0]++;				
