@@ -24,8 +24,7 @@ module.exports = function(arr){
 	// все записуеться как массив в sortedClasses
 	});
 		
-		for (var i = 0; i<= sortedClasses.length - 1; i++) 
-		{
+		for (var i = 0; i<= sortedClasses.length - 1; i++) {
 			delete classesCount[sortedClasses[i]];
 			
 			bool.forEach(function(a,index) {  
